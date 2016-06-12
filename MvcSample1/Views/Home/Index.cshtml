@@ -1,0 +1,59 @@
+﻿@model MvcSample1.Models.RegisterModel
+@{
+    ViewBag.Title = "Index" ;
+}
+
+<h2> @ViewBag.Msg Index @ViewData["hru"] </h2>
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="utf-8" />
+        <title>@ViewBag.Title - My ASP.NET MVC Application</title>
+        <meta name="viewport" content="width=device-width" />
+    </head>
+    <body>
+        <header>
+            <div>
+                <div>
+                    <p>@Html.ActionLink("your logo here", "Index", "Home")</p>
+                </div>
+                <div >
+                    <section id="login">
+                    @*    @Html.Partial("_LoginPartial")*@
+                    </section>
+                    <nav>
+                        <ul id="menu">
+                            <li>@Html.ActionLink("First", "First", "Home")</li>
+                            <li>@Html.ActionLink("Second", "Second", "Home")</li>
+                            <li>@Html.ActionLink("Third", "Third", "Home")</li>
+                        </ul>
+
+                        @using (Html.BeginForm())
+                        {
+                            @Html.AntiForgeryToken()
+                            @Html.ValidationSummary()
+                            Html.RenderPartial("DIsplayForm");
+                        }
+
+                    </nav>
+                </div>
+            </div>
+        </header>
+        <div id="body">
+          @*  @RenderSection("featured", required: false)
+            <section class="content-wrapper main-content clear-fix">
+                @RenderBody()
+            </section>*@
+        </div>
+        <footer>
+            <div class="content-wrapper">
+                <div class="float-left">
+                    <p>&copy; @DateTime.Now.Year - My ASP.NET MVC Application</p>
+                </div>
+            </div>
+        </footer>
+
+        @Scripts.Render("~/bundles/jquery")
+        @*@RenderSection("scripts", required: false)*@
+    </body>
+</html>

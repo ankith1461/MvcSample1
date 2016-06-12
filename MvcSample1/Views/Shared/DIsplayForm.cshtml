@@ -1,0 +1,44 @@
+﻿@model MvcSample1.Models.RegisterModel
+<fieldset>
+    <legend>Registration Form</legend>
+    <ol>
+        <li>
+            @Html.LabelFor(m => m.UserName)
+            @Html.TextBoxFor(m => m.UserName)
+        </li>
+        <li>
+            @Html.LabelFor(m => m.Password)
+            @Html.PasswordFor(m => m.Password)
+        </li>
+        <li>
+            @Html.LabelFor(m => m.ConfirmPassword)
+            @Html.PasswordFor(m => m.ConfirmPassword)
+        </li>
+    </ol>
+    <input type="submit" value="Register" onclick="test()" />
+</fieldset>
+ 
+<script type="text/javascript">
+
+    function test() {
+        debugger;
+        var inputName = "asdf";//$('#UserName').val();
+        var inputPaassword = "asdf"; //$('#Password').val();
+        var inputConfirmPAssword = "asdf"; //$('#ConfirmPassword').val();
+
+            var dataas = { Name1: inputName, Password1: inputPaassword, ConfirmPassword1: inputConfirmPAssword };
+            
+            $.ajax({
+                url: "Home/Ankith",
+                type: 'post',
+                dataType: 'json',
+                contentType: "application/json; charset=utf-8",
+                data: dataas,
+                traditional:true,
+                success: function (data) {
+                    $('#ConfirmPassword').html(data.msg);
+                }
+            });
+        }
+
+    </script>
